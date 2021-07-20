@@ -3,7 +3,7 @@
     <div v-if="visibility">
       <p>visibility: true</p>
       <p>{{ message }}</p>
-      <input v-model="message">
+      <input v-model="message" />
     </div>
     <div v-else>
       <p>visibility: false</p>
@@ -39,6 +39,6 @@ export default {
     clickedEvent() {
       console.log('clicked!');
     },
-  }
+  },
 };
 </script>
