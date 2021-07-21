@@ -25,7 +25,7 @@ export default {
     ...mapGetters('events', ['events']),
   },
   methods: {
-    ...mapActions('events', ['fetchEvents'])
-  }
+    ...mapActions('events', ['fetchEvents']),
+  },
 };
 </script>

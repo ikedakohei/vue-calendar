@@ -18,10 +18,10 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'CalendarDetails',
   computed: {
-    ...mapGetters('events', ['events'])
+    ...mapGetters('events', ['events']),
   },
   methods: {
-    ...mapActions('events', ['fetchEvents'])
+    ...mapActions('events', ['fetchEvents']),
   },
 };
 </script>
