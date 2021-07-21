@@ -7,7 +7,14 @@ const state = {
 };
 
 const getters = {
-  events: (state) => state.events,
+  events: (state) =>
+    state.events.map((event) => {
+      return {
+        ...event,
+        start: new Date(event.start),
+        end: new Date(event.end),
+      };
+    }),
 };
 
 const mutations = {
