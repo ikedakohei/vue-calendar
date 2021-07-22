@@ -23,8 +23,18 @@
       ></v-calendar>
     </v-sheet>
 
-    <v-dialog :value="dialogMessage !== ''">
-      <h1>{{ dialogMessage }}</h1>
+    <v-dialog :value="event !== null">
+      <div v-if="event !== null">
+        <v-card>
+          <h1>イベント詳細</h1>
+          <p>name: {{ event.name }}</p>
+          <p>start: {{ event.start }}</p>
+          <p>end: {{ event.end }}</p>
+          <p>timed: {{ event.timed }}</p>
+          <p>description: {{ event.description }}</p>
+          <p>color: {{ event.color }}</p>
+        </v-card>
+      </div>
     </v-dialog>
   </div>
 </template>
@@ -37,21 +47,20 @@ export default {
   name: 'Calendar',
   data: () => ({
     value: format(new Date(), 'yyyy/MM/dd'),
-    dialogMessage: '',
   }),
   computed: {
-    ...mapGetters('events', ['events']),
+    ...mapGetters('events', ['events', 'event']),
     title() {
       return format(new Date(this.value), 'yyyy年 M月');
     },
   },
   methods: {
-    ...mapActions('events', ['fetchEvents']),
+    ...mapActions('events', ['fetchEvents', 'setEvent']),
     setToday() {
       this.value = format(new Date(), 'yyyy/MM/dd');
     },
     showEvent({ event }) {
-      this.dialogMessage = event.name;
+      this.setEvent(event);
     },
   },
 };
