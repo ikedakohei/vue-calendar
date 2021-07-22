@@ -1,8 +1,7 @@
 FROM node:14
 
-RUN mkdir -p /vue-calendar/frontend
-WORKDIR /vue-calendar/frontend
-WORKDIR /vue-calendar/frontend
+RUN mkdir /frontend
+WORKDIR /frontend
 
 RUN apt update && \
   npm i && \

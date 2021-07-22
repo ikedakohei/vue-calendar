@@ -10,7 +10,7 @@ services:
     volumes:
       - type: bind
         source: ./frontend
-        target: /vue-calendar/frontend
+        target: /frontend
     ports:
       - 8080:8080
     depends_on:
@@ -22,7 +22,7 @@ services:
     volumes:
       - type: bind
         source: ./backend
-        target: /vue-calendar/backend
+        target: /backend
     ports:
       - 3000:3000
     depends_on:
