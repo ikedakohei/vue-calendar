@@ -5,19 +5,9 @@
         <v-icon size="20px">mdi-close</v-icon>
       </v-btn>
     </v-card-actions>
-    <v-card-title>
+    <v-card-text>
       <DialogSection icon="mdi-square" :color="event.color || 'blue'">
-        {{ event.name }}
-      </DialogSection>
-    </v-card-title>
-    <v-card-text>
-      <DialogSection icon="mdi-clock-time-three-outline">
-        {{ event.start.toLocaleString() }} ~ {{ event.end.toLocaleString() }}
-      </DialogSection>
-    </v-card-text>
-    <v-card-text>
-      <DialogSection icon="mdi-card-text-outline">
-        {{ event.description || 'no description' }}
+        <v-text-field v-model="name" label="タイトル"></v-text-field>
       </DialogSection>
     </v-card-text>
   </v-card>
@@ -28,16 +18,20 @@ import { mapGetters, mapActions } from 'vuex';
 import DialogSection from './DialogSection';
 
 export default {
-  name: 'EventDetailDialog',
+  name: 'EventFormDialog',
   components: {
     DialogSection,
   },
+  data: () => ({
+    name: '',
+  }),
   computed: {
     ...mapGetters('events', ['event']),
   },
   methods: {
-    ...mapActions('events', ['setEvent']),
+    ...mapActions('events', ['setEvent', 'setEditMode']),
     closeDialog() {
+      this.setEditMode(false);
       this.setEvent(null);
     },
   },
